@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	</head>
+	<body>
+		
+	</body>
+	<script type="text/javascript">
+		// promise.then(resultv => {...});
+		// .catch(error => {···});
+		// .finally(() => {···});
+		
+		// finally方法里面的操作，应该是与状态无关的，不依赖于 Promise 的执行结果。
+		// server.listen(port).then(function() {
+		// 	....
+		// })
+		// .finally(serber.stop);
+		
+		// finally本质上是then方法的特例。
+		
+		// Promise.prototype.finally = function (callback) {
+		// 	let P = this.constructor;
+		// 	return this.then(
+		// 	value => P.resolve(callback()).then(() => value),
+		// 	reason => P.resolve(callback()).then(() => {throw reason})
+		// 	)
+		// }
+		
+		// 从上面的实现还可以看到，finally方法总是会返回原来的值。
+	</script>
+</html>

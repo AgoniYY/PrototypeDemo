@@ -1,0 +1,36 @@
+throwtable和exception的区别：
+
+1、throwable是父类，exception是子类。
+
+2、throwable是根基，exception是从throwable派生出来的。
+
+3、throwable中包括exception（异常）和error（错误）。
+
+4、throwable用来定义所有可以作为异常被抛出来的类，exception专指程序本身可以处理的异常，一般性的异常。
+
+
+throwtable简介:
+
+1、Throwable是java.lang包中一个专门用来处理异常的类。它有两个子类，即Error 和Exception，它们分别用来处理两组异常。
+
+2、Throwable类是整个异常体系类的“父级类”，当然最终追根溯源到底的父类当然要归于Object类。
+
+Throwable类实现了Serializable接口，表示Throwable可以进行序列化，继承自Object类，他的子类主要是Error和Exception类还有一个StackRecorder类。
+
+3、Exception是Throwable的一个主要子类。Exception下面还有子类，其中一部分子类分别对应于Java程序运行时常常遇到的各种异常的处理，其中包括隐式异常。
+
+比如，程序中除数为0引起的错误、数组下标越界错误等，这类异常也称为运行时异常，因为它们虽然是由程序本身引起的异常，但不是程序主动抛出的，而是在程序运行中产生的。
+
+4、子类Error和Exception
+
+Exception 则表示一般性的异常，而且这种异常是设计中早已考虑到很常见的错误，并且一定要求在设计中说明如果处理这种异常。
+
+Error主要是用于表示Java和虚拟机内部的异常信息，而Exception异常则是由于程序中可能存在各种的问题，是需要使用者去注意和捕获的异常。
+
+
+
+Error和Exception的区别：
+
+Exception 则表示一般性的异常，而且这种异常是设计中早已考虑到很常见的错误，并且一定要求在设计中说明如果处理这种异常。
+
+Error主要是用于表示Java和虚拟机内部的异常信息，而Exception异常则是由于程序中可能存在各种的问题，是需要使用者去注意和捕获的异常。

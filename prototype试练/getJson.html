@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	</head>
+	<!-- promise.prototype.then() -->
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		//链式写法then返回的是一个新的promise实例(不是原来的promise实例)
+		// getJSON("/posts.json").then(function(json) {
+		//   return json.post;
+		// }).then(function(post) {
+		//   // ...
+		// });
+		
+		
+		//采用链式的then可以指定一组按照次序调用的回调函数.
+		//前一个回调函数可能返回的还是一个promise对象(一步操作)
+		// getJSON("/post/1.json").then(function(post) {
+		//   return getJSON(post.commentURL);
+		// }).then(function funcA(comments) {
+		//   console.log("resolved: ", comments);
+		// }, function funcB(err){
+		//   console.log("rejected: ", err);
+		// });
+	</script>
+</html>

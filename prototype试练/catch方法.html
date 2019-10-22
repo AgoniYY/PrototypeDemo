@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	</head>
+	<body>
+		<!-- Promise.prototype.catch方法是.then(null, rejection)或.then(undefined, rejection)的别名，用于指定发生错误时的回调函数。 -->
+	</body>
+	<script type="text/javascript">
+		// p.then((val) => console.log('fulfilled:', val)).catch((err) => console.log('rejected', err));
+		// 等同于
+		// p.then((val) => console.log('fulfilled:', val)).then(null, (err) => console.log("rejected:", err));
+		// const promise = new Promise(function(resolve, reject){
+		// 	throw new Error('test');
+		// });
+		// promise.catch(function(error){
+		// 	console.log(error);
+		// })
+		
+		//写法一
+		// const promise = new Promise(function(resolve, reject){
+		// 	try {
+		// 		throw new Error('test');
+		// 	}catch(e){
+		// 		reject(e);
+		// 	}
+		// });
+		// promise.catch(function(error){
+		// 	console.log(error);
+		// })
+		//写法二
+		// const promise = new Promise(function(resolve, reject){
+		// 	reject(new Error('test'));
+		// });
+		// promise.catch(function(error){
+		// 	console.log(error);
+		// })
+		
+		// const someAsyncThing = function() {
+		// 	return new Promise(function(resolve, reject) {
+		// 		let x = null;
+		// 		resolve(x + 2);
+		// 	});
+		// };
+		// someAsyncThing().then(function() {
+		// 	console.log('everything is great');
+		// });
+		// setTimeout(() => {console.log(123)},2000);
+		
+		
+		// 上面代码中，someAsyncThing函数产生的 Promise 对象，内部有语法错误。
+		// 浏览器运行到这一行，会打印出错误提示ReferenceError: x is not defined，但是不会退出进程、终止脚本执行，2 秒之后还是会输出123。,
+		// 这就是说，Promise 内部的错误不会影响到 Promise 外部的代码，通俗的说法就是“Promise 会吃掉错误”。
+		
+		
+		//未捕获错误,事件冒泡到最外层
+		// const promise = new Promise(function(resolve, reject) {
+		// 	resolve('ok');
+		// 	setTimeout(function() {throw new Error('test')},0)
+		// });
+		// promise.then(function(value) {console.log(value)});
+		
+		//以下代码运行完catch方法指定的回调函数,会接着运行后面那个then方法指定的回调函数.如果没报错,则会跳过catch方法
+		// const someAsyncThing = function() {
+		// 	return new Promise(function(resolve, reject) {
+		// 	// 下面一行会报错，因为x没有声明
+		// 	x = 1;
+		// 	resolve(x + 2);
+		//     });
+		// };
+		// someAsyncThing()
+		// .catch(function(error) {
+		//   console.log('oh no', error);
+		// })
+		// .then(function() {
+		//   console.log('carry on');
+		// });
+		// oh no [ReferenceError: x is not defined]
+		// carry on
+		
+		
+		//以下代码直接跳过catch方法,直接执行then,如果then有错误也与catch方法无关
+		// Promise.resolve().catch(function(error) {
+		// 	console.log('oh no',error);
+		// })
+		// .then(function() {
+		// 	console.log('carry on');
+		// })
+		
+		
+		//catch 方法中还能在跑出错误
+		// const someAsyncThing = function() {
+		// 	return new Promise(function(resolve, reject) {
+		// 	// 下面一行会报错，因为x没有声明
+		// 	resolve(x + 2);
+		// 	});
+		// };
+		// someAsyncThing().then(function() {
+		// 	return someOtherAsyncThing();
+		// }).catch(function(error) {
+		// 	console.log('oh no', error);
+		// 	// 下面一行会报错，因为 y 没有声明
+		// 	y + 2;
+		// }).then(function() {
+		// 	console.log('carry on');
+		// });
+		// oh no [ReferenceError: x is not defined]
+		
+		
+		//以下代码的第二个catch方法用来捕获前一个catch方法抛出的错误
+		// someAsyncThing().then(function() {
+		// 	return someOtherAsyncThing();
+		// }).catch(function(error) {
+		// 	console.log('oh no', error);
+		// 	// 下面一行会报错，因为y没有声明
+		// 	y + 2;
+		// }).catch(function(error) {
+		// 	console.log('carry on', error);
+		// });
+		// oh no [ReferenceError: x is not defined]
+		// carry on [ReferenceError: y is not defined]
+	</script>
+</html>

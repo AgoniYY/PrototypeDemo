@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		//构造函数
+		// function Person() {
+		// 	this.name = 'keith';
+		// 	this.age = 16
+		// }
+		// var boy = new Person();
+		// console.log(boy.name + ' ' + boy.age + '岁')
+		
+		
+		// 所有的实例对象都可以继承构造函数中的属性和方法。但是，同一个对象实例之间，无法共享属性
+		// function Person(name, height) {
+		// 	this.name = name;
+		// 	this.height = height;
+		// 	this.hoby = function() {
+		// 		return 'watching movies';
+		// 	}
+		// }
+		// var boy = new Person('keith', 180);
+		// var girl = new Person('meria', 153);
+		// console.log(boy.name);
+		// console.log(girl.name);
+		// console.log(boy.hoby === girl.hoby)
+		
+		
+		
+		function Person(name, height) {
+			this.name = name;
+			this.height = height;
+		}
+		Person.prototype.hoby = function() {
+			return 'watching movies';
+		}
+		var boy = new Person('keith', 180);
+		var girl = new Person('meria', 153);
+		console.log(boy.name + '  ' + boy.height);
+		console.log(girl.name + '  ' + girl.height);
+		console.log(boy.hoby === girl.hoby)
+	</script>
+</html>
